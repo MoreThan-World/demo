@@ -1,0 +1,224 @@
+.ui-button {
+  border: 1px solid var(--color-primary);
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-radius: var(--radius-2);
+  padding: 10px 14px;
+  font-size: var(--font-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ui-button:hover:not(:disabled) {
+  box-shadow: var(--shadow-sm);
+}
+
+.ui-button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.ui-button.primary {
+  background: linear-gradient(120deg, var(--color-accent), var(--color-accent-2));
+  color: var(--color-primary);
+  border-color: transparent;
+}
+
+.ui-button.ghost {
+  background: transparent;
+}
+
+.ui-button.subtle {
+  border-color: var(--color-border);
+}
+
+.ui-button.small {
+  padding: 8px 10px;
+  font-size: var(--font-sm);
+}
+
+.ui-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ui-field {
+  display: grid;
+  gap: 6px;
+}
+
+.ui-label {
+  font-size: var(--font-sm);
+  color: var(--color-muted);
+}
+
+.ui-input,
+.ui-select,
+.ui-textarea {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2);
+  padding: 10px 12px;
+  font-size: var(--font-md);
+  background: var(--color-surface);
+}
+
+.ui-input:focus,
+.ui-select:focus,
+.ui-textarea:focus {
+  outline: 2px solid rgba(11, 13, 17, 0.2);
+}
+
+.ui-helper {
+  font-size: var(--font-xs);
+  color: var(--color-muted);
+}
+
+.ui-error {
+  font-size: var(--font-xs);
+  color: #b42318;
+}
+
+.ui-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-3);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.ui-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: var(--font-xs);
+  border: 1px solid var(--color-border);
+  color: var(--color-muted);
+}
+
+.ui-badge.strong {
+  background: linear-gradient(120deg, var(--color-accent), var(--color-accent-2));
+  color: #0b0d11;
+  border-color: transparent;
+}
+
+.ui-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ui-tab {
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  padding: 6px 12px;
+  font-size: var(--font-sm);
+  background: var(--color-surface);
+}
+
+.ui-tab.active {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  border-color: var(--color-primary);
+}
+
+.ui-toast {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+  padding: 12px 14px;
+  border-radius: var(--radius-2);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  box-shadow: var(--shadow-lg);
+  z-index: 10;
+}
+
+.ui-modal-backdrop,
+.ui-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 13, 17, 0.45);
+  display: grid;
+  place-items: center;
+  z-index: 20;
+}
+
+.ui-modal {
+  width: min(520px, 92vw);
+  background: var(--color-surface);
+  border-radius: var(--radius-3);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.ui-modal-header,
+.ui-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ui-modal-close {
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.ui-modal-body,
+.ui-drawer-body {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.ui-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+.ui-drawer {
+  width: min(420px, 90vw);
+  height: 100%;
+  margin-left: auto;
+  background: var(--color-surface);
+  border-left: 1px solid var(--color-border);
+  padding: var(--space-4);
+  display: grid;
+  gap: var(--space-3);
+}
+
+.ui-skeleton {
+  background: linear-gradient(90deg, #f2f3f7 0%, #e7e9ef 50%, #f2f3f7 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease infinite;
+  border-radius: var(--radius-2);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: -200% 0%;
+  }
+}
+
+.ui-empty,
+.ui-error-state {
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-3);
+  padding: var(--space-5);
+  text-align: center;
+  color: var(--color-muted);
+  background: #fbfcff;
+}
