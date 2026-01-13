@@ -31,7 +31,7 @@ describe('App', () => {
   it('renders and completes a checkout flow', async () => {
     render(<App />)
 
-    expect(await screen.findByText('아이돌 굿즈 거래플랫폼, Evaluation')).toBeInTheDocument()
+    expect(await screen.findByText('음반 거래 플랫폼, Evaluation')).toBeInTheDocument()
 
     const buyButtons = screen.getAllByText('구매')
     fireEvent.click(buyButtons[0])

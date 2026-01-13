@@ -321,7 +321,7 @@ export default function App() {
         <div className="top-actions">
           <Input
             className="search-input"
-            placeholder="아티스트, 포카, 특전 검색"
+            placeholder="아티스트, 앨범, 포맷 검색"
             aria-label="검색"
             value={filters.query}
             onChange={(event) =>
@@ -339,8 +339,8 @@ export default function App() {
             <section className="market-header">
               <div>
                 <p className="eyebrow">검색</p>
-                <h1>아이돌 굿즈 거래플랫폼, Evaluation</h1>
-                <p className="lede">멤버/버전/특전별로 원하는 굿즈를 빠르게 찾을 수 있어요.</p>
+                <h1>음반 거래 플랫폼, Evaluation</h1>
+                <p className="lede">포맷/에디션/상태별로 원하는 음반을 빠르게 찾을 수 있어요.</p>
                 <div className="tag-row">
                   {tagSuggestions.map((tag) => (
                     <Button key={tag} variant="ghost" size="sm" onClick={() => setFilters((prev) => ({ ...prev, query: tag }))}>
@@ -356,7 +356,7 @@ export default function App() {
 
             <section className="market-filters">
               <Select
-                label="그룹"
+                label="레이블"
                 value={filters.group}
                 onChange={(event) => setFilters((prev) => ({ ...prev, group: event.target.value }))}
               >
@@ -367,7 +367,7 @@ export default function App() {
                 ))}
               </Select>
               <Select
-                label="멤버"
+                label="디스크"
                 value={filters.member}
                 onChange={(event) => setFilters((prev) => ({ ...prev, member: event.target.value }))}
               >
@@ -499,7 +499,7 @@ export default function App() {
 
                 {selectedListing && selectedVariant && (
                   <Card className="detail-panel">
-                    <p className="eyebrow">Variant & 판매글 상세</p>
+                    <p className="eyebrow">음반/판매글 상세</p>
                     <h2>{selectedGoods?.title}</h2>
                     <p className="muted">
                       {selectedGoods?.artist} · {selectedVariant.member} · {selectedVariant.version} ·{' '}
@@ -899,7 +899,7 @@ export default function App() {
       <footer className="footer">
         <div>
           <h4>EVALUATION</h4>
-          <p className="muted">K-POP 굿즈 C2C 거래 플랫폼 (검수 제외)</p>
+          <p className="muted">음반 C2C 거래 플랫폼 (검수 제외)</p>
         </div>
         <div className="footer-links">
           <a href="#">회사소개</a>
