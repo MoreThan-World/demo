@@ -27,17 +27,26 @@ vi.mock('../shared/lib/api.js', () => ({
   }),
 }))
 
+vi.mock('../shared/lib/auth.js', () => ({
+  signInWithGoogle: async () => ({}),
+  signOutUser: async () => ({}),
+  onAuthChange: (callback) => {
+    callback(null)
+    return () => {}
+  },
+}))
+
 describe('App', () => {
   it('renders and completes a checkout flow', async () => {
     render(<App />)
 
-    expect(await screen.findByText('음반 거래 플랫폼, Evaluation')).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { name: /Evaluation/i })).toBeInTheDocument()
 
-    const buyButtons = screen.getAllByText('구매')
+    const buyButtons = screen.getAllByRole('button', { name: '구매' })
     fireEvent.click(buyButtons[0])
 
     expect(await screen.findByText('결제 확인')).toBeInTheDocument()
-    fireEvent.click(screen.getByText('결제하기'))
+    fireEvent.click(screen.getByRole('button', { name: '결제하기' }))
 
     expect(await screen.findByText('거래/주문 상태')).toBeInTheDocument()
   })

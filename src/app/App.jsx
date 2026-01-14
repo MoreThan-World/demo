@@ -3,6 +3,7 @@ import { fetchMarketData } from '../shared/lib/api.js'
 import { buildBg } from '../shared/lib/artwork.js'
 import { conditionLabel, tabs } from '../shared/lib/constants.js'
 import { formatPrice } from '../shared/lib/format.js'
+import { onAuthChange, signInWithGoogle, signOutUser } from '../shared/lib/auth.js'
 import {
   Badge,
   Button,
@@ -68,6 +69,7 @@ export default function App() {
   const [orders, setOrders] = useState([])
   const [favorites, setFavorites] = useState(new Set())
   const [toast, setToast] = useState(null)
+  const [authUser, setAuthUser] = useState(null)
   const [offerPrice, setOfferPrice] = useState('16500')
   const [counterPrice, setCounterPrice] = useState('17500')
   const [sortBy, setSortBy] = useState('latest')
@@ -96,6 +98,13 @@ export default function App() {
     return () => {
       alive = false
     }
+  }, [])
+
+  useEffect(() => {
+    const unsubscribe = onAuthChange((user) => {
+      setAuthUser(user)
+    })
+    return () => unsubscribe()
   }, [])
 
   const listings = data?.listings ?? []
@@ -214,6 +223,24 @@ export default function App() {
     setTimeout(() => setToast(null), 2200)
   }
 
+  const handleLogin = async () => {
+    try {
+      await signInWithGoogle()
+      pushToast('로그인되었습니다.')
+    } catch {
+      pushToast('로그인에 실패했습니다. 잠시 후 다시 시도해 주세요.')
+    }
+  }
+
+  const handleLogout = async () => {
+    try {
+      await signOutUser()
+      pushToast('로그아웃되었습니다.')
+    } catch {
+      pushToast('로그아웃에 실패했습니다.')
+    }
+  }
+
   const toggleFavorite = (listingId) => {
     setFavorites((prev) => {
       const next = new Set(prev)
@@ -328,7 +355,24 @@ export default function App() {
               setFilters((prev) => ({ ...prev, query: event.target.value }))
             }
           />
-          <Button variant="ghost">로그인</Button>
+          {authUser ? (
+            <>
+              <div className="user-chip">
+                <div className="avatar" style={{ backgroundImage: buildBg(authUser.photoURL) }} />
+                <div>
+                  <span className="muted">로그인</span>
+                  <strong>{authUser.displayName || '사용자'}</strong>
+                </div>
+              </div>
+              <Button variant="ghost" onClick={handleLogout}>
+                로그아웃
+              </Button>
+            </>
+          ) : (
+            <Button variant="ghost" onClick={handleLogin}>
+              Google 로그인
+            </Button>
+          )}
           <Button variant="primary">판매 등록</Button>
         </div>
       </header>

@@ -1,6 +1,6 @@
-﻿# Evaluation | K-POP Goods Marketplace (Frontend MVP)
+# Evaluation | Record Marketplace (Frontend MVP)
 
-프론트/디자인을 먼저 완성하기 위한 실서비스 수준의 MVP UI입니다. 백엔드는 아직 붙이지 않았으며, mock 데이터 + fake API로 동작합니다.
+프론트/디자인을 먼저 완성하기 위한 실서비스 수준의 음반 거래 MVP UI입니다. 백엔드는 아직 붙이지 않았으며, mock 데이터 + fake API로 동작합니다.
 
 ## 화면 흐름
 - 검색/필터 → Variant 상세 → Listing 상세 → 구매(샌드박스 결제) → 주문 상태
